@@ -1,18 +1,13 @@
 import { Stack } from 'expo-router';
-import * as SystemUI from 'expo-system-ui';
-import { useEffect } from 'react';
 
 import theme from '~/constants/colors';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: 'index',
 };
 
-export default function RootLayout() {
-  useEffect(() => {
-    SystemUI.setBackgroundColorAsync(theme.colors.backgroundColor);
-  }, []);
+export default function ConnectionsLayout() {
   return (
     <Stack
       screenOptions={{
@@ -21,7 +16,18 @@ export default function RootLayout() {
           backgroundColor: theme.colors.backgroundColor,
         },
       }}>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="index"
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: theme.colors.backgroundColor,
+          },
+          contentStyle: {
+            backgroundColor: theme.colors.backgroundColor,
+          },
+        }}
+      />
     </Stack>
   );
 }
